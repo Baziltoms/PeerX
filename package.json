@@ -1,0 +1,19 @@
+{
+  "name": "peerx-root",
+  "version": "1.0.0",
+  "description": "PeerX - Academic Management, P2P Skill Exchange & Industry Recruitment Platform",
+  "scripts": {
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client",
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "start:server": "npm run start --prefix server",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "seed": "npm run seed --prefix server",
+    "test": "npm run test --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "author": "MCA Final Year Project",
+  "license": "MIT"
+}

@@ -1,0 +1,298 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 selection:bg-indigo-500 selection:text-white antialiased transition-colors duration-200;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.04) 0px, transparent 40%),
+      radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.03) 0px, transparent 40%),
+      radial-gradient(at 50% 100%, rgba(59, 130, 246, 0.03) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  .dark body {
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.10) 0px, transparent 50%),
+      radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight text-slate-900 dark:text-slate-100 font-bold;
+  }
+}
+
+/* Global Dark Theme Overrides for dark mode switching */
+html.dark body {
+  background-color: #090d16 !important;
+  color: #f8fafc !important;
+}
+
+html.dark .bg-white {
+  background-color: #0f172a !important; /* slate-900 */
+}
+
+html.dark .bg-slate-50,
+html.dark .bg-slate-50\/50,
+html.dark .bg-slate-50\/60,
+html.dark .bg-slate-50\/70,
+html.dark .bg-slate-50\/80 {
+  background-color: #0b1329 !important; /* slate-950 */
+}
+
+html.dark .bg-slate-100,
+html.dark .bg-slate-100\/60,
+html.dark .bg-slate-100\/70 {
+  background-color: #1e293b !important; /* slate-800 */
+}
+
+html.dark .bg-slate-200 {
+  background-color: #334155 !important; /* slate-700 */
+}
+
+html.dark .text-slate-900,
+html.dark .text-slate-800,
+html.dark .text-slate-700 {
+  color: #f8fafc !important; /* slate-50 */
+}
+
+html.dark .text-slate-600,
+html.dark .text-slate-500 {
+  color: #cbd5e1 !important; /* slate-300 */
+}
+
+html.dark .border-slate-200,
+html.dark .border-slate-200\/80,
+html.dark .border-slate-200\/60,
+html.dark .border-slate-100 {
+  border-color: #1e293b !important; /* slate-800 */
+}
+
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+  border-color: #334155 !important;
+}
+
+@layer utilities {
+  /* Glassmorphism containers */
+  .glass-card {
+    background: #ffffff;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(226, 232, 240, 0.95);
+    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+  }
+
+  .dark .glass-card {
+    background: rgba(15, 23, 42, 0.85);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+  }
+
+  .glass-card-dark {
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+  }
+
+  .glass-panel {
+    background: #ffffff;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+  }
+
+  .dark .glass-panel {
+    background: rgba(15, 23, 42, 0.9);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Text Gradients */
+  .text-gradient-brand {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400;
+  }
+
+  .text-gradient-cyan {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 dark:from-blue-400 dark:via-indigo-400 dark:to-cyan-400;
+  }
+
+  /* Tactile Button Hierarchy */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-semibold text-xs shadow-sm hover:shadow-indigo-500/25 active:scale-[0.98] transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200/80 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-semibold text-xs border border-slate-200/80 dark:border-slate-700 active:scale-[0.98] transition-all duration-150 disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium text-xs active:scale-[0.98] transition-all duration-150;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-900/50 hover:bg-rose-100 dark:hover:bg-rose-900/60 font-semibold text-xs active:scale-[0.98] transition-all duration-150;
+  }
+
+  /* Card elevation and micro hover effects */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-card-hover;
+  }
+
+  /* Ambient mesh backgrounds */
+  .bg-mesh-light {
+    background-color: #ffffff;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.06) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.06) 0px, transparent 50%);
+  }
+
+  .bg-mesh-dark {
+    background-color: #0b1329;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.2) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.15) 0px, transparent 50%),
+      radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.12) 0px, transparent 50%);
+  }
+}
+
+/* Custom modern scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full hover:bg-slate-400 transition-colors;
+}
+
+/* Print styling for resume generator & certificates */
+@media print {
+  @page {
+    size: auto;
+    margin: 10mm 12mm;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    width: 100% !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Universal hide for all application navigation, headers, sidebars, drawers, notifications, dialogs */
+  header,
+  aside,
+  nav,
+  footer,
+  .no-print,
+  [data-no-print],
+  .toast-container,
+  #ai-assistant-drawer,
+  div[role="dialog"] {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  /* Reset layout structure so content is full-width without sidebar offset */
+  .lg\:pl-64,
+  [class*="lg:pl-64"] {
+    padding-left: 0 !important;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Resume specific print container */
+  #printable-resume,
+  .printable-resume {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #printable-resume > div,
+  .printable-resume > div {
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  .print-shadow-none {
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Clean print typography & page break control */
+  h1, h2, h3, h4, h5, h6 {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  .break-inside-avoid,
+  .resume-section-item,
+  tr,
+  li {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Preserve background graphics & colors (e.g. badges, pills, skill masteries) */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* Proctoring & Examination Malpractice Protection */
+.proctored-exam-container {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  -webkit-touch-callout: none !important;
+}
+
+@media print {
+  .proctored-exam-container,
+  body.proctored-exam-active,
+  body.proctored-exam-active * {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+
+
